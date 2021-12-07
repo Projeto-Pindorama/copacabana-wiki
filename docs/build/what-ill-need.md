@@ -43,7 +43,9 @@ version avaliable on Arch Linux that I've just taken the version number and
 pasted here. 
 In short: don't worry.
 
+- Around 30GB of free disk space, an external disk is recommended;
 - A fair bit of UNIX (more specifically Linux), Shell script and a little of C knowledge;
 - Some coffee and water;
 - Some good music;
-- Time to spare; 
+- Time to spare;
+- Patience (a lot of it). 

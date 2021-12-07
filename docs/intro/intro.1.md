@@ -90,14 +90,14 @@ installed by a normal package manager) will be packaged as a plain tarball for
 its proper stage.  
 For example, in a normal system, you'd have these packages for the base system:  
 
-- Linux.5.4.89.SPARC.32bit.Copacabana.1.0.pkg
-- musl.1.2.1.SPARC.32bit.Copacabana.1.0.pkg
-- libressl.3.3.1.SPARC.32bit.Copacabana.1.0.pkg
-- star.1.6.SPARC.32bit.Copacabana.1.0.pkg
-- GNUawk.5.1.0.SPARC.32bit.Copacabana.1.0.pkg
-- GHbc.5.1.1.SPARC.32bit.Copacabana.1.0.pkg
-- heirloom-toolchest.070715.SPARC.32bit.Copacabana.1.0.pkg
-- stripped-lobase.20211017.SPARC.32bit.Copacabana.1.0.pkg
+- `Linux.5.4.89.SPARC.32bit.Copacabana.1.0.pkg`
+- `musl.1.2.1.SPARC.32bit.Copacabana.1.0.pkg`
+- `libressl.3.3.1.SPARC.32bit.Copacabana.1.0.pkg`
+- `star.1.6.SPARC.32bit.Copacabana.1.0.pkg`
+- `GNUawk.5.1.0.SPARC.32bit.Copacabana.1.0.pkg`
+- `GHbc.5.1.1.SPARC.32bit.Copacabana.1.0.pkg`
+- `heirloom-toolchest.070715.SPARC.32bit.Copacabana.1.0.pkg`
+- `stripped-lobase.20211017.SPARC.32bit.Copacabana.1.0.pkg`
 - *and so on*
 
 But, in Copacabana, all of this will be distributed as a single tarball that
@@ -137,10 +137,10 @@ The format is `stage.X.Y`, where `X.Y` is the Copacabana version and `stage` is
 the stage name itself; they're coming compacted with xz, since it have the best
 compression ratio out there.[^8]  
 
-- linux.X.Y
+- `linux.X.Y`
 : The Linux kernel and related files.
 
-- tsukene.X.Y
+- `tsukene.X.Y`
 : The base system, it contains everything that you'd need to use the system.  
 	**Fun fact**: =="tsukene" (付け根) is the japanese word for "root"==,
 	we decided to do it as a pun on the UNIX FHS.  
@@ -148,17 +148,17 @@ compression ratio out there.[^8]
 	language ---, but we didn't found so much information about it
 	nor an exact translator.
 
-- doc.X.Y
+- `doc.X.Y`
 : Documentation, manual pages and documentation tools (such as `nroff`).
 
-- devt.X.Y
+- `devt.X.Y`
 : Developer Tools, such as GNU Compiler Collection, m4, GNU make etc.
 
 Any other packages will be packaged just as usual.  
 
 ## Package manager
 Oh dear, package managers...  
-I'm managing to create one, made in Go and based on Sun Solaris' SVR4 package
+I'm managing to create one, made in Nim and based on Sun Solaris' SVR4 package
 manager, since it's really simple to implement and still has some nice features,
 but I won't do it in fact for now, mostly because I don't have time to spare.  
 So, for now, there's no official package manager for Copacabana, so you may have 
@@ -177,7 +177,7 @@ Everything here is, for now, made with Shell script (more specifically,
 AT&T's ksh93).
 I know there are better alternatives for it out there, but it's what
 I have more familiarity and experience with.  
-In the future, I plan to start writing everything with Go.
+In the future, I plan to start writing everything with Nim and maybe C.
 
 ## Footnotes and references
 [^0]:

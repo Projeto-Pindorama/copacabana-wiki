@@ -38,6 +38,9 @@ markdown_extensions:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - md_in_html
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
 
 nav:
   - Home: index.md  
@@ -45,13 +48,9 @@ nav:
   - Introduction:
     - I. Prologue: intro/prologue.md
     - II. Technical introdution to Pindorama/Copacabana: intro/intro.1.md 
-      #    - Why should i care?: intro/care.md
-      #    - Who's the target audience?: intro/audience.md 
-      #    - Where does it run?: intro/run.md
-      #    - How is it divided?: intro/stages.md
-  - Installing
   - From the toolchain to the 付け根 from Scratch!:
     - What I'll need?: build/what-ill-need.md
+    - Laying the groundwork: build/groundwork.md 
       #    - cross-tools:
       #      - List of packages:
       #    - tools:
