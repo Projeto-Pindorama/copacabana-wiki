@@ -1,12 +1,12 @@
 site_name: Silicon Tabula 
 site_author: Pindorama
-copyright: Copyright &copy; 2019-2021 Pindorama<br />"Vinicius" and the Copacabana logo are copyrighted by Pindorama et Kayo Henrique (Tamboru). Ask us for permission before using.
+copyright: Copyright &copy; 2019-2022 Pindorama<br />"Vinicius" and the Copacabana logo are copyrighted by Pindorama et Kayo Henrique (Tamboru). Ask us for permission before using.
 
 repo_name: Projeto-Pindorama/copacabana
 repo_url: https://github.com/Projeto-Pindorama/copacabana
 
 theme:
-  name: material
+  name: material 
   palette:
     - scheme: default
       primary: yellow
@@ -41,6 +41,13 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
+  - codehilite:
+      guess_lang: false
+      use_pygments: true
+      pygments_style: rrt 
+
+extra_css:
+  - css/extra.css
 
 nav:
   - Home: index.md  

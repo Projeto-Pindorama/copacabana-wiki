@@ -18,19 +18,19 @@ its purposes.
 | Systemland     | Its purpose                                                                                                 |
 |----------------|-------------------------------------------------------------------------------------------------------------|
 | /var           | Variable data files                                                                                         |
-| /var/tmp       | Symbolic link to `/usr/tmp` (for compatibility with newer programs)                                           |
-| /var/spool     | Symbolic link to `/usr/spool` (for compatibility with newer programs)                                         |
-| /var/lock      | Symbolic link to `/var/run/lock`                                                                              |
-| /var/mail      | Symbolic link to `/var/../usr/spool/mail`                                                                     |
+| /var/tmp       | Symbolic link to `/usr/tmp` (for compatibility with newer programs)                                         |
+| /var/spool     | Symbolic link to `/usr/spool` (for compatibility with newer programs)                                       |
+| /var/lock      | Symbolic link to `/var/run/lock`                                                                            |
+| /var/mail      | Symbolic link to `/usr/spool/mail`                                                                          |
 | /var/run       | Run-time variable data                                                                                      |
 | /var/lib       | Variable state information                                                                                  |
 | /var/lib/color | Color management information (optional)                                                                     |
 | /var/lib/misc  | Miscellaneous variable data                                                                                 |
 | /var/cache     | Application cache data                                                                                      |
-| /var/log       | Symbolic link to `/var/adm`                                                                                   |
+| /var/log       | Symbolic link to `/var/adm`                                                                                 |
 | /var/adm       | Active data collection files (replaced `/usr/adm`, so that `/usr` could be mounted read-only if needed)[^2] |
 | /etc           | System-wide configuration files                                                                             |
-| /etc/skel      | Symbolic link to `/usr/skel`                                                                                  |
+| /etc/skel      | Symbolic link to `/usr/skel`                                                                                |
 | /sbin          | Essential binaries for use by the administrator                                                             |
 | /sys           | Kernel and system information virtual filesystem                                                            |
 | /tmp           | Small and non-reboot-persistent temporary files                                                             |
@@ -46,7 +46,7 @@ its purposes.
 | /usr/etc        | Userland-related program configuration                                         |
 | /usr/include    | Directory for include files                                                    |
 | /usr/lib        | Userland-related program libraries                                             |
-| /usr/lib64      | Symbolic link to `/usr/lib` (in case of non-multilib systems)                    |
+| /usr/lib64      | Symbolic link to `/usr/lib` (in case of non-multilib systems)                  |
 | /usr/bin        | Userland-related non-root-exclusive program executables                        |
 | /usr/sbin       | Userland-related root-exclusive program executables                            |
 | /usr/ccs        | Development tools (`cc`(1), `ld`(1), `ar`(1) etc)[^3]                          |
@@ -75,16 +75,13 @@ us).
 We intend to evolve this in the future, but it will be this for now.  
 
 ## Distribution (literally)
-==Unlike the most part of common/mainstream Linux distributions and even
-proprietary UNIXes== such as Sun Microsystems' Solaris --- I don't know about AIX,
-HP-UX or other UNIXes, but I'll go by the logic of the domino effect and assume
-that this type of distribution is an industry pattern --- ==we don't distribute
-the **entire** distribution just as packages. Our model is inspired on OpenBSD's
-one, where the system is distributed as stages.==[^7]
+Unlike the most part of common/mainstream Linux distributions and even proprietary
+UNIXes, we don't distribute the **entire** distribution just as packages. Our model
+is inspired on OpenBSD's one, where the system is distributed as stages.[^7]
 > *- "What do you mean m8? I will have a 60MB tarball containing just KDE?"*  
 
-No. ==This will just apply in fact for the base system (and some other **basic** 
-tools)==. 
+No. This will just apply in fact for the base system (and some other **basic** 
+tools). 
 In other words, things that normally would be packaged individually (and
 installed by a normal package manager) will be packaged as a plain tarball for
 its proper stage.  
@@ -92,7 +89,7 @@ For example, in a normal system, you'd have these packages for the base system:
 
 - `Linux.5.4.89.SPARC.32bit.Copacabana.1.0.pkg`
 - `musl.1.2.1.SPARC.32bit.Copacabana.1.0.pkg`
-- `libressl.3.3.1.SPARC.32bit.Copacabana.1.0.pkg`
+- `LibreSSL.3.3.1.SPARC.32bit.Copacabana.1.0.pkg`
 - `star.1.6.SPARC.32bit.Copacabana.1.0.pkg`
 - `GNUawk.5.1.0.SPARC.32bit.Copacabana.1.0.pkg`
 - `GHbc.5.1.1.SPARC.32bit.Copacabana.1.0.pkg`
@@ -157,8 +154,7 @@ compression ratio out there.[^8]
 Any other packages will be packaged just as usual.  
 
 ## Package manager
-Oh dear, package managers...  
-I'm managing to create one, made in Nim and based on Sun Solaris' SVR4 package
+I'm managing to create one, made in Go and based on Sun Solaris' SVR4 package
 manager, since it's really simple to implement and still has some nice features,
 but I won't do it in fact for now, mostly because I don't have time to spare.  
 So, for now, there's no official package manager for Copacabana, so you may have 
@@ -170,14 +166,14 @@ Moreover, talking about third-party package managers, [a guy at Liga dos
 Programadores' Discord server said that he was using Copacabana with the Nix
 package manager](https://discord.com/channels/366404358440615951/366404358952189973/899428494226903090),
 which is impossible since at the time I was building the "Temporary Tools"
-stage.  
+stage just for testing purposes.  
 
 ## Programming  
 Everything here is, for now, made with Shell script (more specifically,
-AT&T's ksh93).
+AT&T's ksh93 and GNU Broken-Again Shell).
 I know there are better alternatives for it out there, but it's what
 I have more familiarity and experience with.  
-In the future, I plan to start writing everything with Nim and maybe C.
+In the future, I plan to start writing everything with Go and C.
 
 ## Footnotes and references
 [^0]:
