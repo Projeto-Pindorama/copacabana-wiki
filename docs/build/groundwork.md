@@ -161,7 +161,7 @@ Linux kernel and some bootloader files.
 
 Your final partition scheme shall look like this:  
 ![](../img/Screenshot from 2022-01-10 10-15-13.png)  
-The root partition is actually part of a logical partition, like `/var`,
+The root partition is actually part of a logical partition, along with `/var`,
 `/opt` and `/usr`.  
 
 #### Exposing the disk to the system
@@ -177,9 +177,60 @@ the identifier (call it "name" for short) of the loop device is --- what isn't
 exactly essential considering that we will need to use `fdisk -l` to list the
 partitions later anyway.  
 
+#### Initializing a Linux file system on the disk
+
+After exposing to the system, we must initialize a file system on the
+partitions.  
+For the `/boot` partition, we're going to use ext2, and for the rest, ext4.  
+Run `fdisk -l` to list the partitions, then just format them with `mkfs`.  
+
+![](../img/formatting_the_disk.png)
+
 ### Entering `root`
 
 In this section, we'll be entering `root` and setting up another user for
 cross-compiling the system.  
 
-#### Creating an unprivileged user (just for this)
+```console
+workstation%; doas su
+doas (fulano@workstation) password:
+workstation#; whoami
+root
+workstation#;
+```
+
+#### Creating the `baggio` user 
+
+It is recommended to create an unprivileged user for cross-compiling the
+system, both because the fact that one single mistake can trash your host
+system --- I remember crashing my Arch installation two years ago after
+trying to cross-compile a vanilla LFS system --- and because getting
+packages over the Web and compiling them as `root` isn't really safe.  
+
+Our new user (and also group) will be called `baggio`, to keep things
+simpler --- you can also create them with other name, still.  
+
+```console
+workstation#; useradd baggio -k /dev/null -m
+```
+`-k /dev/null` will use `/dev/null` as the `skel` directory, in other words, this
+prevents `/{etc,usr}/skel` to be copied into his `~` directory.  
+`-m` just creates the `~` directory.  
+
+We may also give him a password, for this, use `passwd`(1).  
+```console
+workstation#; passwd baggio
+```
+The password used for `baggio` is "`caffe`" ("coffee" in italian), but you may
+use other password if you want.  
+
+After creating the user, create a group with the same name and then add the user
+to it.  
+```console
+workstation#; groupadd baggio
+workstation#; usermod -aG baggio baggio
+```
+
+#### Setting up the cross-compiling environment  
+
+ 
